@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import React from 'react';
+import {
+  BrowserRouter as Router, Route, Routes, Link,
+} from 'react-router-dom';
+import Home from './components/Home';
+import QuoteDisplay from './components/QouteDisplay';
 import './App.css';
+import Categories from './components/Categories';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => (
+  <Router>
+    <div>
+      <div className="nav-container">
+        <nav>
+          <h1>
+            <Link to="https://github.com/kayjeee/Micro_Verse_React_Maths_Mathematician_App_v2">
+              Micro_Verse_React_Maths_Mathematician_App_v2
+            </Link>
+            <span className="heart-sticker" role="img" aria-label="heart">❤️</span>
+          </h1>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/quote">Quote</Link></li>
+            <li><Link to="/categories">categories</Link></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div className="content-container">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/quote" element={<QuoteDisplay />} />
+          <Route path="/categories" element={<Categories />} />
+        </Routes>
+      </div>
     </div>
-  );
-}
+  </Router>
+);
 
 export default App;
