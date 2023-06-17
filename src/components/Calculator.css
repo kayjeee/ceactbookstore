@@ -1,0 +1,66 @@
+.calculator-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('../kayjee.jpg');
+  background-size: cover;
+}
+
+.header {
+  margin-bottom: 0;
+  margin-left: -46rem;
+  text-align: left;
+  padding-left: 45px;
+  color: #71812882;
+}
+
+.calculator {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.display {
+  background-color: #f7f7f7;
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+
+.Button {
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-align: center;
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Button.operator {
+  background-color: #f1a33c;
+  color: #fff;
+}
+
+.Button.function {
+  background-color: #d6d6d6;
+}
+
+.Button.zero {
+  grid-column: span 2;
+}
+
+.Button:hover {
+  background-color: #c0c0c0;
+}
