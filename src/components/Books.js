@@ -3,6 +3,10 @@ import React, { useState, useEffect } from 'react';
 const Books = () => {
   const [books, setBooks] = useState([]);
 
+  const storeForm = (form) => {
+    localStorage.setItem('form', JSON.stringify(form));
+  };
+
   useEffect(() => {
     const storedForm = localStorage.getItem('form');
     const parsedBooks = storedForm ? JSON.parse(storedForm) : [];
@@ -11,7 +15,7 @@ const Books = () => {
 
   const addBook = (author, title) => {
     const newBook = { author, title };
-    setBooks([...books, newBook]);
+    setBooks((prevBooks) => [...prevBooks, newBook]);
     storeForm([...books, newBook]);
   };
 
@@ -21,23 +25,21 @@ const Books = () => {
     storeForm(updatedBooks);
   };
 
-  const storeForm = (form) => {
-    localStorage.setItem('form', JSON.stringify(form));
-  };
-
   const BookList = () => (
     <div>
       {books.map((book, index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <div key={index} className="tableRow">
           <div className="bookInfo">
             <div className="title">{book.title}</div>
             <div className="author">
               by
+              {' '}
               {book.author}
             </div>
           </div>
           <div>
-            <button onClick={() => deleteBook(index)} id={`delete${index}`}>
+            <button onClick={() => deleteBook(index)} id={`delete${index}`} type="button">
               Remove
             </button>
           </div>
@@ -62,6 +64,7 @@ const Books = () => {
               document.getElementById('addNewForm').reset();
             }
           }}
+          type="button"
         >
           Add Book
         </button>
