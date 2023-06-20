@@ -4,10 +4,10 @@ import categoriesSlice from './Categories/categoriesSlice';
 
 // Configure Redux Store
 const store = configureStore({
-    reducer: {
-        books: booksSlice.reducer,
-        categories: categoriesSlice.reducer,
-    },
+  reducer: {
+    books: booksSlice.reducer,
+    categories: categoriesSlice.reducer,
+  },
 });
 
 export default store;
