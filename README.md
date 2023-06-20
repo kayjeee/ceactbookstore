@@ -1,70 +1,203 @@
-# Getting Started with Create React App
+<a name="readme-top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
+  <!-- <img src="calculator.png" alt="logo" width="140"  height="auto" /> -->
+  <br/>
 
-## Available Scripts
+  <h3><b>CeatBookStore README Template</b></h3>
 
-In the project directory, you can run:
+</div>
 
-### `npm start`
+<!-- TABLE OF CONTENTS -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# 📗 Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+- [💻 Getting Started](#getting-started)
+  - [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [📝 License](#license)
 
-### `npm test`
+<!-- PROJECT DESCRIPTION -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+# 📖 CeatBookStore <a name="about-project"></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**CeatBookStore**"CeatBookStore" is a website for all fans of react and redux. It is a Single Page App (SPA) that allows users to
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Navigate pages by clicks
 
-### `npm run eject`
+  <!-- <img src="calculator.png" alt="logo" width="100"  height="auto" />-->
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🛠 Built With <a name="built-with"></a>
+- React
+- Node
+- Redux
+### Tech Stack <a name="tech-stack"></a>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Describe the tech stack and include only the relevant sections that apply to your project.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<details>
+  <summary>React</summary>
+  <ul>
+    <li><a href="https://reactjs.org/">React.js</a></li>
+  </ul>
+</details>
 
-## Learn More
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://nodejs.com/">Express.js</a></li>
+  </ul>
+</details>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- Features -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Key Features <a name="key-features"></a>
 
-### Code Splitting
+> The application fetches data from API
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **[Fetch data from API]**
 
-### Analyzing the Bundle Size
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- GETTING STARTED -->
 
-### Making a Progressive Web App
+## 💻 Getting Started <a name="getting-started"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> To get a local copy up and running, follow these steps.
 
-### Advanced Configuration
+### Prerequisites
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+To run a cloned Create React App project, follow these steps:
 
-### Deployment
+1. Open your terminal or command prompt.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. Navigate to the root directory of the cloned project using the `cd` command. For example, if the project is located in a folder called "my-app", use:
 
-### `npm run build` fails to minify
+  ```shell
+   cd my-app
+  ```
+Once you are in the project's directory, install the project dependencies by running the following command:
+```
+npm install
+```
+This will fetch and install all the necessary packages and dependencies specified in the project's package.json file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+After the installation is complete, you can start the development server by running the following command:
+```
+npm start
+```
+This will compile the project and start a local development server. You should see output indicating that the server is running and listening for requests.
+
+Open your web browser and visit http://localhost:3000. You should see your Create React App project running and can interact with it in the browser.
+
+During development, the server will automatically reload the app whenever you make changes to the source code. Simply save your changes, and the browser will update to reflect those changes.
+
+Remember to keep the terminal or command prompt window open while running the development server. You can stop the server at any time by pressing Ctrl + C in the terminal or command prompt.
+
+That's it! You can now explore, modify, and test your cloned Create React App project on your local machine.
+
+### Setup
+Clone this repository to your desired folder:
+
+```
+cd my-folder
+git clone git@github.com:myaccount/my-project.git
+```
+Install
+Install this project with:
+
+```
+cd my-project
+npm install
+
+```
+Usage
+To run the project, execute the following command:
+
+```
+npm start
+
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+> Mention all of the collaborators of this project.
+> 
+  👤 **Kagiso Sebogodi**
+    
+- GitHub: [@Kagiso Sebogodi](https://github.com/kayjeee)
+- LinkedIn: [Kagiso Sebogodi](https://www.linkedin.com/in/kagiso-sebogodi/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+>I will be building your "Math magicians" website for more than a whole week. Here is the list of projects that will guide me through the steps described above. . In some of the projects, I will be working collaboratively by using pair programming.
+
+- [Project 2:] **[Components.]**
+- [Project 3:] **[ Events.]**
+- [ Project 4:] **[ Fetch data from API.]**
+- [Project 5:] **[Full website.]**
+- [Project 6:] **[Tests (pair programming).]**
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- SUPPORT -->
+## ⭐️ Show your support <a name="support"></a>
+If you find this project valuable and useful, I would greatly appreciate your support. Here are a couple of ways you can show your support:
+
+Follow Me on GitHub: Stay updated with my latest projects and contributions by following me on GitHub. You can find my profile here.
+
+Star the Project: If you think this project deserves recognition, please consider giving it a star on GitHub. Your star helps to increase its visibility and encourages others to explore and use it. You can star the project here below and follow me
+### My GitHub profile: Follow me I follow Back🤞
+ [kayjeee](https://github.com/kayjeee)
+
+### GitHub Project Link:(⊙_⊙;)
+ [Micro_Verse_React_Maths_Mathematician_App](https://github.com/kayjeee/Micro_Verse_React_Maths_Mathematician_App)
+
+Thank you for your support and encouragement. It means a lot to me as a developer. If you have any feedback or suggestions, feel free to reach out. Together, we can make this project even better!
+
+Keep coding and stay awesome! 👨‍💻✨
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGEMENTS -->
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+I would like to express my heartfelt gratitude and give credit to the following GitHub users who have inspired and contributed to this project:
+
+https://github.com/Peter-Dumbari: Their innovative ideas and code snippets were instrumental in shaping certain aspects of this project.
+https://github.com/10-menachi: Their open-source libraries and documentation provided valuable insights that helped overcome various challenges during development.
+https://github.com/AbdelazizSoliman: Their innovative ideas and code snippets were instrumental in shaping certain aspects of this project.
+https://github.com/bronnie313: Their open-source libraries and documentation provided valuable insights that helped overcome various challenges during development.
+
+If I inadvertently missed anyone who deserves acknowledgment, please accept my apologies and know that your contributions are greatly appreciated.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LICENSE -->
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./LICENSE) licensed.
+
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
