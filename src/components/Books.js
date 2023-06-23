@@ -1,74 +1,115 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PropTypes from 'prop-types';
+import { fetchBooks, addBook, deleteBook } from '../redux/Books/booksSlice';
+import BookForm from './BookForm';
 
-const Books = () => {
-  const [books, setBooks] = useState([]);
+const Book = ({ objectFromBookList }) => {
+  const dispatch = useDispatch();
 
-  const storeForm = (form) => {
-    localStorage.setItem('form', JSON.stringify(form));
+  const handleDelete = async (id) => {
+    try {
+      await dispatch(deleteBook(id));
+      dispatch(fetchBooks());
+    } catch (error) {
+      // console.log(error);
+    }
   };
 
   useEffect(() => {
-    const storedForm = localStorage.getItem('form');
-    const parsedBooks = storedForm ? JSON.parse(storedForm) : [];
-    setBooks(parsedBooks);
-  }, []);
+    const reloadBooks = async () => {
+      await dispatch(fetchBooks());
+    };
 
-  const addBook = (author, title) => {
-    const newBook = { author, title };
-    setBooks((prevBooks) => [...prevBooks, newBook]);
-    storeForm([...books, newBook]);
-  };
-
-  const deleteBook = (index) => {
-    const updatedBooks = books.filter((_, i) => i !== index);
-    setBooks(updatedBooks);
-    storeForm(updatedBooks);
-  };
-
-  const BookList = () => (
-    <div>
-      {books.map((book, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <div key={index} className="tableRow">
-          <div className="bookInfo">
-            <div className="title">{book.title}</div>
-            <div className="author">
-              by
-              {' '}
-              {book.author}
-            </div>
-          </div>
-          <div>
-            <button onClick={() => deleteBook(index)} id={`delete${index}`} type="button">
-              Remove
-            </button>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+    reloadBooks();
+  }, [dispatch]);
 
   return (
     <div>
-      <BookList />
-      <form id="addNewForm">
-        <input type="text" id="bookTitle" placeholder="Title" />
-        <input type="text" id="authorName" placeholder="Author" />
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            const newTitle = document.getElementById('bookTitle').value;
-            const newAuthor = document.getElementById('authorName').value;
-            if (newAuthor !== '' && newTitle !== '') {
-              addBook(newAuthor, newTitle);
-              document.getElementById('addNewForm').reset();
-            }
-          }}
-          type="button"
-        >
+      <div>
+        <div>
+          <p>{objectFromBookList.category}</p>
+          <h1>{objectFromBookList.title}</h1>
+          <span>{objectFromBookList.author}</span>
+        </div>
+        <ul>
+          <li>
+            <button type="button">
+              Comment
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              onClick={() => {
+                handleDelete(objectFromBookList.item_id);
+              }}
+            >
+              Remove
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+Book.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  objectFromBookList: PropTypes.object.isRequired,
+};
+
+const Books = () => {
+  const loading = useSelector((store) => store.books.loading);
+  const booksList = useSelector((store) => store.books.booksList);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  const handleAddBook = () => {
+    const newBook = {
+      category: 'New_Category',
+      title: 'New_Title',
+      author: 'New_Author',
+    };
+
+    dispatch(addBook(newBook))
+      .then(() => dispatch(fetchBooks()))
+      .catch((error) => console.log(error));
+  };
+
+  if (loading) {
+    return (
+      <div className="loading_container_medium">
+        <div className="loading_container_medium">
+          <div className="loading_class" />
+        </div>
+      </div>
+    );
+  }
+
+  const booksArrayList = Object.entries(booksList).map(([key, value]) => ({
+    item_id: key,
+    ...value[0],
+  }));
+
+  const bookListItems = booksArrayList.map((book) => (
+    <Book objectFromBookList={book} key={book.item_id} />
+  ));
+
+  return (
+    <div className="booksarraylistcontainer">
+      {bookListItems}
+      <hr />
+      <div className="bookformcontainer">
+        <BookForm />
+        <button type="button" onClick={handleAddBook}>
           Add Book
         </button>
-      </form>
+      </div>
     </div>
   );
 };
