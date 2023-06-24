@@ -6,35 +6,48 @@ const BookForm = () => {
   const categories = ['Action', 'ScienceFiction', 'Maths', 'Economy'];
   const dispatch = useDispatch();
 
+  // Create category options for the select dropdown
   const categoryOptions = categories.map((category, key) => (
+    // eslint-disable-next-line react/no-array-index-key
     <option value={category} key={key}>
       {category}
     </option>
   ));
 
+  // Initialize state for the book form inputs
   const [book, setBook] = useState({
     title: '',
     author: '',
     category: '',
   });
 
+  // Handle input changes and update the book state
   const handleChange = (e) => {
-    setBook((book) => ({
-      ...book,
+    setBook((prevBook) => ({
+      ...prevBook,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const handledispatch = async (e) => {
+  // Handle book form submission
+  const handleDispatch = async (e) => {
     e.preventDefault();
-    const bookInfo = [book.title, book.author, book.category];
-    if (bookInfo[0] !== '' || bookInfo[1] !== '' || bookInfo[2] !== '') {
+    const { title, author, category } = book;
+
+    // Check if any input field is empty
+    if (title.trim() !== '' && author.trim() !== '' && category.trim() !== '') {
       try {
-        await dispatch(addBook(bookInfo));
+        // Dispatch addBook action to add a new book
+        await dispatch(addBook(book));
+
+        // Fetch updated book list after adding the book
         dispatch(fetchBooks());
-        setBook({ title: '', author: '' });
+
+        // Clear the form inputs
+        setBook({ title: '', author: '', category: '' });
       } catch (error) {
-        console.log(error);
+        // Handle error here
+        // console.log(error);
       }
     }
   };
@@ -67,10 +80,7 @@ const BookForm = () => {
           </option>
           {categoryOptions}
         </select>
-        <button
-          type="submit"
-          onClick={handledispatch}
-        >
+        <button type="submit" onClick={handleDispatch}>
           ADD BOOK
         </button>
       </form>
