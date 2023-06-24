@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../redux/users/usersSlice';
@@ -13,11 +14,19 @@ const UsersComponent = () => {
   return (
     <div>
       {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
+      {error && (
+      <p>
+        Error:
+        {' '}
+        {error}
+      </p>
+      )}
       <ul>
         {users.map((user) => (
           <li key={user.id}>
-            {user.firstName} {user.lastName}
+            {user.firstName}
+            {' '}
+            {user.lastName}
           </li>
         ))}
       </ul>
