@@ -41,7 +41,7 @@ const usersSlice = createSlice({
 });
 
 // Export the action creator
-export { fetchUsers };
+// export { fetchUsers };
 
 // Export the users slice as default
 export default usersSlice;

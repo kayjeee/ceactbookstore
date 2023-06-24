@@ -78,7 +78,10 @@ const Books = () => {
 
     dispatch(addBook(newBook))
       .then(() => dispatch(fetchBooks()))
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      });
   };
 
   if (loading) {
