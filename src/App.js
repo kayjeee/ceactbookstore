@@ -15,7 +15,7 @@ const App = () => (
         <div className="nav-container">
           <nav>
             <h1>
-              <Link to="https://github.com/kayjeee/Micro_Verse_React_Maths_Mathematician_App_v2">
+              <Link to="https://github.com/kayjeee/">
                 Micro_Verse_React_Maths_Mathematician_App_v2
               </Link>
               <span className="heart-sticker" role="img" aria-label="heart">❤️</span>
