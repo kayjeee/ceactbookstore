@@ -4,40 +4,44 @@ import axios from 'axios';
 
 const BASE_URL = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/bQBzRMehcR3M6emvw1S7';
 
-// Async thunk for fetching books from the Bookstore API
 export const fetchBooks = createAsyncThunk('books/fetchBooks', async () => {
-  const response = await axios.get(`${BASE_URL}/books`);
-  return response.data;
-});
-
-// Async thunk for adding a book using the Bookstore API
-export const addBook = createAsyncThunk('books/addBook', async (bookInfo) => {
-  const newBook = {
-    item_id: uuidv4(),
-    author: bookInfo[1],
-    title: bookInfo[0],
-    category: bookInfo[2],
-  };
   try {
-    const resp = await axios.post(`${BASE_URL}/books`, newBook);
-    return resp.data;
+    const response = await axios.get(`${BASE_URL}/books`);
+    return response.data;
   } catch (error) {
-    throw new Error(error.response.data.message);
+    throw new Error('Failed to fetch books');
   }
 });
 
-// Async thunk for deleting a book using the Bookstore API
-// Async thunk for deleting a book using the Bookstore API
-export const deleteBook = createAsyncThunk('books/deleteBook', async (id) => {
-  await axios.delete(`${BASE_URL}/books/${id}`);
-  return id;
+export const addBook = createAsyncThunk('books/addBook', async (book) => {
+  const newBook = {
+    item_id: uuidv4(),
+    title: book.title,
+    author: book.author,
+    category: book.category,
+  };
+
+  try {
+    const response = await axios.post(`${BASE_URL}/books`, newBook);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to add book');
+  }
 });
 
-// Redux slice for books
+export const deleteBook = createAsyncThunk('books/deleteBook', async (id) => {
+  try {
+    await axios.delete(`${BASE_URL}/books/${id}`);
+    return id;
+  } catch (error) {
+    throw new Error('Failed to delete book');
+  }
+});
+
 const booksSlice = createSlice({
   name: 'books',
   initialState: {
-    books_List: [],
+    booksList: {},
     loading: false,
     error: null,
   },
@@ -57,12 +61,13 @@ const booksSlice = createSlice({
         state.error = action.error.message;
       })
       .addCase(addBook.fulfilled, (state, action) => {
-        state.booksList.push(action.payload);
+        state.booksList[action.payload.item_id] = action.payload;
       })
       .addCase(deleteBook.fulfilled, (state, action) => {
-        state.booksList = state.booksList.filter((book) => book.item_id !== action.payload);
+        delete state.booksList[action.payload];
       });
   },
 });
 
+export const { actions } = booksSlice;
 export default booksSlice.reducer;
