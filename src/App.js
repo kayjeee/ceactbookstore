@@ -1,39 +1,48 @@
 import React from 'react';
+import { IoMdContact } from 'react-icons/io';
 import { Provider } from 'react-redux';
 import {
-  BrowserRouter as Router, Route, Routes, Link,
+  BrowserRouter as Router, Route, Routes, NavLink,
 } from 'react-router-dom';
 import Home from './components/Home';
 import './App.css';
 import Categories from './components/Categories';
 import store from './redux/store';
+import styles from './styles/Navbar.module.css';
+
+const links = [
+  { path: '/', text: 'Books' },
+  { path: '/categories', text: 'Categories' },
+];
 
 const App = () => (
   <Provider store={store}>
     <Router>
-      <div>
-        <div className="nav-container">
-          <nav>
-            <h1>
-              <Link to="https://github.com/kayjeee/Micro_Verse_React_Maths_Mathematician_App_v2">
-                Micro_Verse_React_Maths_Mathematician_App_v2
-              </Link>
-              <span className="heart-sticker" role="img" aria-label="heart">❤️</span>
-            </h1>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/quote">Quote</Link></li>
-              <li><Link to="/categories">categories</Link></li>
+      <div className="nav-container">
+        <nav className={styles.navbar}>
+          <div className={styles.links}>
+            <span className={styles.title}>Bookstore CMS1o</span>
+            <ul className={styles.navList}>
+              {links.map((link) => (
+                <li key={link.text}>
+                  <NavLink
+                    to={link.path}
+                    className={styles.navLink}
+                    activeClassName={styles.active}
+                  >
+                    {link.text}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
-          </nav>
-        </div>
+          </div>
+          <IoMdContact className={styles.icon} />
+        </nav>
 
-        <div className="content-container">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/categories" element={<Categories />} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/categories" element={<Categories />} />
+        </Routes>
       </div>
     </Router>
   </Provider>

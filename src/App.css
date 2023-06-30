@@ -1,59 +1,94 @@
-.bigcontainer {
-  display: grid;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.app {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 150px;
+a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #0290ff;
+}
+
+li {
+  list-style: none;
+}
+
+.booksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem;
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loadingcontainer {
   align-items: center;
-  justify-items: center;
+  display: flex;
+  height: calc(100vh - 15rem);
+  justify-content: center;
+  width: 100%;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 97px;
-  align-items: center;
-  justify-items: center;
+.loading {
+  animation: spinRight 800ms linear infinite;
+  border-radius: 100%;
+  border-right: 4px solid #7a1e733f;
+  height: 8vmax;
+  width: 8vmax;
+  position: relative;
+
+  &::before,
+  &::after {
+    animation: spinLeft 800ms linear infinite;
+    border-left: 3px solid #0290ff;
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: 6vmax;
+    left: calc(50% - 3vmax);
+    position: absolute;
+    top: calc(50% - 3vmax);
+    width: 6vmax;
+  }
+
+  &::after {
+    animation: none;
+    border: 0;
+    border-right: 2px solid #0290ff;
+    height: 4vmax;
+    left: calc(50% - 2vmax);
+    top: calc(50% - 2vmax);
+    width: 4vmax;
+  }
 }
 
-.calculator {
-  display: inline-block;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 20px;
+@keyframes spinLeft {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(720deg);
+  }
 }
 
-.calculator-display {
-  font-size: 24px;
-  padding: 5px;
-  margin-bottom: 10px;
-  background-color: #f0f0f0;
-}
+@keyframes spinRight {
+  from {
+    transform: rotate(360deg);
+  }
 
-.calculator-buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
-}
-
-.calculator-button {
-  border: 1px solid #000;
-  border-radius: 4px;
-  padding: 8px;
-  font-size: 18px;
-  width: 60px;
-  height: 60px;
-  margin: 4px;
-}
-
-.calculator-button:hover {
-  background-color: #ccc;
-}
-
-.heart-sticker {
-  font-size: 20px;
-  margin-left: 5px;
+  to {
+    transform: rotate(0deg);
+  }
 }

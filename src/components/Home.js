@@ -1,11 +1,12 @@
 import React from 'react';
 import Books from './Books';
+import styles from '../styles/Home.module.css';
 
 const Home = () => (
   <div>
-    <h1>Welcome to the Home Page</h1>
-    <p>This is the homepage of the app.</p>
-    <Books />
+    <div className={styles.home}>
+      <Books />
+    </div>
   </div>
 );
 

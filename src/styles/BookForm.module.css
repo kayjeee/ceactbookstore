@@ -1,0 +1,56 @@
+/* Classes */
+.form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.formTitle {
+  color: #888;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.input,
+.select {
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+  height: 3rem;
+  padding: 0 0.5rem;
+}
+
+.input:focus,
+.select {
+  border-color: #a7a6a6;
+  outline: 0;
+}
+
+.input::placeholder,
+.select {
+  color: #cccbcb;
+}
+
+.select:focus {
+  color: black;
+}
+
+.submitButton {
+  background-color: #0290ff;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.submitButton:hover {
+  background-color: transparent;
+  border: 2px solid #0290ff;
+  color: #0290ff;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
