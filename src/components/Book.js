@@ -23,7 +23,7 @@ const Book = ({ booklListObject }) => {
           <div className="Book_maininfocontainer__JPhJd">
             <p className="Book_categorycontainer__YmVid">{booklListObject.category}</p>
             <h2 className="Book_titlecontainer">{booklListObject.title}</h2>
-            <h6 className="Book_authorcontainer">{booklListObject.author}</h6>
+            <h6 className={styles.button1}>{booklListObject.author}</h6>
           </div>
           <ul className={styles.buttonscontainer}>
             <li>
