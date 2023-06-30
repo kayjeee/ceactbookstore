@@ -1,0 +1,50 @@
+.navbar {
+  background-color: #fff;
+  height: 6rem;
+  padding: 0 6.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  gap: 3rem;
+}
+
+.title {
+  color: #0290ff;
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.navLink:hover {
+  opacity: 0.5;
+}
+
+.icon {
+  color: #0290ff;
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 2rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .icon {
+    display: none;
+  }
+}
